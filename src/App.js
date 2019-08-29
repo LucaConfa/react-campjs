@@ -1,72 +1,105 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Hello Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+// Some folks find value in a centralized route config.
+// A route config is just data. React is great at mapping
+// data into components, and <Route> is a component.
 
-// export default App;
-
-// import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-function Index() {
-  return <h2>Home</h2>;
+////////////////////////////////////////////////////////////
+// first our route components
+function Sandwiches() {
+  return <h2>Sandwiches</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function Tacos({ routes }) {
+  return (
+    <div>
+      <h2>Tacos</h2>
+      <ul>
+        <li>
+          <Link to="/tacos/bus">Bus</Link>
+        </li>
+        <li>
+          <Link to="/tacos/cart">Cart</Link>
+        </li>
+      </ul>
+
+      {routes.map((route, i) => (
+        <RouteWithSubRoutes key={i} {...route} />
+      ))}
+    </div>
+  );
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Bus() {
+  return <h3>Bus</h3>;
 }
 
-function AppRouter() {
+function Cart() {
+  return <h3>Cart</h3>;
+}
+
+////////////////////////////////////////////////////////////
+// then our route config
+const routes = [
+  {
+    path: "/sandwiches",
+    component: Sandwiches
+  },
+  {
+    path: "/tacos",
+    component: Tacos,
+    routes: [
+      {
+        path: "/tacos/bus",
+        component: Bus
+      },
+      {
+        path: "/tacos/cart",
+        component: Cart
+      }
+    ]
+  }
+];
+
+// wrap <Route> and use this everywhere instead, then when
+// sub routes are added to any route it'll work
+function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      render={props => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+}
+
+function RouteConfig() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about/">About</Link>
-            </li>
-            <li>
-              <Link to="/users/">Users</Link>
-            </li>
-          </ul>
-        </nav>
+        <ul>
+          <li>
+            <Link to="/tacos">Tacos</Link>
+          </li>
+          <li>
+            <Link to="/sandwiches">Sandwiches</Link>
+          </li>
+        </ul>
 
-        <Route path="/" exact component={Index} />
-        <Route path="/about/" component={About} />
-        <Route path="/users/" component={Users} />
+        {routes.map((route, i) => (
+          <RouteWithSubRoutes key={i} {...route} />
+        ))}
       </div>
     </Router>
   );
 }
 
-export default AppRouter;
+export default RouteConfig;
+
 
 
 // curl -X GET "https://favro.com/api/v1/users" \
