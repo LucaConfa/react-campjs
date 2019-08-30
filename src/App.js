@@ -101,39 +101,3 @@ function RouteConfig() {
 export default RouteConfig;
 
 
-
-// curl -X GET "https://favro.com/api/v1/users" \
-//     -H "organizationId: 8457ff8421e7f3b86eff0f42" \
-//     -u "luca.confalonieri@playgroundxyz.com":"AXpCkQh16npHs4_C0ZXJqkCnRYKKQmxRAES56Cila-B"
-
-
-//     curl -X GET "https://favro.com/api/v1/collections" \
-//     -H "organizationId: 8457ff8421e7f3b86eff0f42" \
-//     -u "user@example.com":"AXpCkQh16npHs4_C0ZXJqkCnRYKKQmxRAES56Cila-B"
-
-
-//     curl -X GET "https://favro.com/api/v1/widgets" \
-//     -H "organizationId: 8457ff8421e7f3b86eff0f42" \
-//     -u "luca.confalonieri@playgroundxyz.com":"AXpCkQh16npHs4_C0ZXJqkCnRYKKQmxRAES56Cila-B"
-
-
-//     curl -X GET "https://favro.com/api/v1/widgets/2c62b26a7aac5cc8489c1b67" \
-//     -H "organizationId: 8457ff8421e7f3b86eff0f42" \
-//     -u "luca.confalonieri@playgroundxyz.com":"AXpCkQh16npHs4_C0ZXJqkCnRYKKQmxRAES56Cila-B"
-
-//     curl -X GET "https://favro.com/api/v1/columns?widgetCommonId=d75f64e0ddd01c1ccd2823ae" \
-//     -H "organizationId: 8457ff8421e7f3b86eff0f42" \
-//     -u "luca.confalonieri@playgroundxyz.com":"AXpCkQh16npHs4_C0ZXJqkCnRYKKQmxRAES56Cila-B"
-
-//     curl -X GET "https://favro.com/api/v1/cards?widgetCommonId=d75f64e0ddd01c1ccd2823ae&archived=false" \
-//     -H "organizationId: 8457ff8421e7f3b86eff0f42" \
-//     -u "luca.confalonieri@playgroundxyz.com":"AXpCkQh16npHs4_C0ZXJqkCnRYKKQmxRAES56Cila-B"
-
-
-//     curl -X GET "https://favro.com/api/v1/tags" \
-//     -H "organizationId: 8457ff8421e7f3b86eff0f42" \
-//     -u "luca.confalonieri@playgroundxyz.com":"AXpCkQh16npHs4_C0ZXJqkCnRYKKQmxRAES56Cila-B"
-
-//     curl -X GET "https://favro.com/api/v1/customfields" \
-//     -H "organizationId: 8457ff8421e7f3b86eff0f42" \
-//     -u "luca.confalonieri@playgroundxyz.com":"AXpCkQh16npHs4_C0ZXJqkCnRYKKQmxRAES56Cila-B"
